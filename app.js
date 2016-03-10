@@ -15,16 +15,16 @@ var amqp_server = 'localhost';
 var amqp_channel = 'teleinfo';
 var teleinfo_input = '/dev/ttyAMA0';
 var port = 8081;
-var amqp_publish_frequency = 5000;
+var amqp_publish_frequency = 10000;
 var debug = true;
 
 //Begin teleinfo events
 var trameEvents = teleinfo('/dev/ttyAMA0');
 
 //AMQP publisher
-setTimeout(function() {
+setInterval(function() {
 
-  trameEvents.on('tramedecodee', function (data) {
+  trameEvents.once('tramedecodee', function (data) {
 
     amqp.connect('amqp://'+amqp_server).then(function(conn) {
 
