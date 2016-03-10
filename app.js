@@ -3,7 +3,11 @@ var teleinfo = require('teleinfo');
 var amqp = require('amqplib');
 var when = require('when');
 var util = require('util');
-var server = require('http').Server(app);
+var http = require('http');
+
+//Socket.io init
+var express = require('express'), app = express();
+var server = http.Server(app);
 var io = require('socket.io')(server);
 
 //Configuration
@@ -12,7 +16,7 @@ var amqp_channel = 'teleinfo';
 var teleinfo_input = '/dev/ttyAMA0';
 var port = 8081;
 var amqp_publish_frequency = 5000;
-var debug = false;
+var debug = true;
 
 //Begin teleinfo events
 var trameEvents = teleinfo('/dev/ttyAMA0');
@@ -53,10 +57,11 @@ trameEvents.on('tramedecodee', function (data) {
   if (debug) { console.log(" [x] Sent to websocket '%s'", data); }
 });
 
-//log errors
+//Log teleinfo errors
 trameEvents.on('error', function (err) {
   console.log(util.inspect(err));
 });
 
 //Start server
 console.log('Server listening on port: '.concat(port));
+server.listen(port);

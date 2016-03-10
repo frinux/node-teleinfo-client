@@ -3,6 +3,7 @@
     "teleinfo": "0.2.0",
     "amqplib": "0.4.1",
     "when": "3.7.7",
+    "express": "*",
     "socket.io": "*"
   }
 }
