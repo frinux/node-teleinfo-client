@@ -12,6 +12,7 @@ var amqp_channel = 'teleinfo';
 var teleinfo_input = '/dev/ttyAMA0';
 var port = 8081;
 var amqp_publish_frequency = 5000;
+var debug = false;
 
 //Begin teleinfo events
 var trameEvents = teleinfo('/dev/ttyAMA0');
