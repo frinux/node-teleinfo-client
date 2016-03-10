@@ -1,8 +1,6 @@
 # node-teleinfo-client
 
-Warning: this is still a draft and non functionnal client for teleinfo (EDF)
-
-Objectives:
-- retrieve teleinfo data
+This app:
+- retrieves teleinfo data
 - push data regularly to AMQP (RabbitMQ)
-- push real time data to websocket
+- push data to websocket to display in real time on a web app
